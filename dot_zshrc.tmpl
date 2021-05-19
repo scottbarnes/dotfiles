@@ -1,42 +1,127 @@
-# Keychain junk
+### Host specific things ###
+
+{{- if eq .chezmoi.hostname "cupcake" }}
+## CUPCAKE ##
+# Keychain
 eval `keychain --eval --agents ssh id_rsa id_ed25519 id_rsa_4096`
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Path
 export PATH=/Users/scott/Library/Python/3.9/bin:/usr/sbin:$PATH
-
-# Path to your oh-my-zsh installation.
+# oh-my-zsh
 export ZSH="/Users/scott/.oh-my-zsh"
+plugins=(
+  git
+  colored-man-pages
+  django
+  docker
+  dotenv
+  gitignore
+  pip
+  virtualenvwrapper
+)
+
+# lesspipe: brew install lesspipe
+export LESSOPEN="|$(brew --prefix)/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+
+# zsh syntax highlighting: brew install zsh-styax-highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{- end }}
+
+
+{{- if eq .chezmoi.hostname "mousehouse" }}
+## MOUSEHOUSE ##
+# Keychain
+eval `keychain --eval --agents ssh id_rsa`
+# Path
+export PATH=/usr/bin:$PATH
+# oh-my-zsh
+export ZSH="/home/scott/.oh-my-zsh"
+plugins=(
+  archlinux
+  autojump
+  colored-man-pages
+  copydir
+  copyfile
+  cp
+  django
+  docker
+  dotenv
+  git
+  gitignore
+  pip
+  python
+  systemd
+  virtualenvwrapper
+  zsh-autosuggestions
+  zsh-vim-mode
+)
+
+# lesspipe: see source-highlight package
+export LESSOPEN="| src-hilite-lesspipe.sh %s" # See source-highlight package
+
+# zsh syntax highlighting: pacman -S zsh-syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# django
+export SHELL_PLUS='ipython'
+{{- end }}
+
+
+### Universal settings ###
+
+# Get zsh going
+source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ## More environment variables
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
+# Theme
 ZSH_THEME="agnoster"
 
-# zplug romkatv/powerlevel10k, as:theme, depth:1
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+  export VISUAL='nvim'
+else
+  export EDITOR='vim'
+  export VISUAL='nvim'
+fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Aliases
+alias vim="nvim"
+alias vi="nvim"
+alias mMousehouse="mosh -p 60020:60029 mousehouseR"
+alias mTurtle="mosh -p 60010:60019 turtleR"
+alias mNihilism="mosh -p 60000:60009 nihilismR"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Get a two line prompt.
+# agnoster
+prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+      print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+  else
+      print -n "%{%k%}"
+  fi
+
+  print -n "%{%f%}"
+  CURRENT_BG=''
+
+  #Adds the new line and ➜ as the start character.
+  printf "\n ➜";
+}
+# Hide user@host
+# prompt_context(){}
+
+# Hooks
+# Source: https://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-    d
+# ls after every CD
+function chpwd() {
+    emulate -L zsh
+    ls -al
+}
+
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,19 +175,6 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	git
-	colored-man-pages
-	django
-	docker
-	dotenv
-	gitignore
-	pip
-	virtualenvwrapper
-)
-
-source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
@@ -110,15 +182,6 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-  export VISUAL='nvim'
-else
-  export EDITOR='vim'
-  export VISUAL='nvim'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -131,29 +194,5 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
-alias vi="nvim"
-alias mMousehouse="mosh -p 60020:60029 mousehouseR"
-alias mTurtle="mosh -p 60010:60019 turtleR"
-alias mNihilism="mosh -p 60000:60009 nihilismR"
-#
-# 
-# agnoster
-# Get a two line prompt.
-prompt_end() {
-  if [[ -n $CURRENT_BG ]]; then
-      print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
-  else
-      print -n "%{%k%}"
-  fi
 
-  print -n "%{%f%}"
-  CURRENT_BG=''
-
-  #Adds the new line and ➜ as the start character.
-  printf "\n ➜";
-}
-# Hide user@host
-prompt_context(){}
-
-# Making a change to test chezmoi
+# vim:syntax=zsh
