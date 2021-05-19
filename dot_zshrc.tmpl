@@ -24,6 +24,9 @@ export LESSOPEN="|$(brew --prefix)/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSO
 
 # zsh syntax highlighting: brew install zsh-styax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh autosuggestions
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 {{- end }}
 
 
@@ -61,6 +64,9 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s" # See source-highlight package
 # zsh syntax highlighting: pacman -S zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# zsh autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
 # django
 export SHELL_PLUS='ipython'
 {{- end }}
@@ -70,7 +76,6 @@ export SHELL_PLUS='ipython'
 
 # Get zsh going
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ## More environment variables
 export VIMCONFIG=~/.config/nvim
