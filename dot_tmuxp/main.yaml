@@ -1,0 +1,13 @@
+session_name: main
+windows:
+  - window_name: irc
+    # manually set up windows as desired, then get the layout: $ tmux list-windows
+    layout: e391,194x54,0,0{97x54,0,0[97x21,0,0,0,97x32,0,22,2],96x54,98,0,1}
+    panes:
+      # shell_command executes commands (even remotely) sequentially via send-key
+      - shell_command:
+        - mosh srb@ssh.ocf.berkeley.edu
+        - tmux a
+        focus: true # must come last?
+      - # just give the shell
+      - # just give the shell
