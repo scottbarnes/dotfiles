@@ -1,3 +1,5 @@
+# vim:fileencoding=utf-8:ft=conf
+
 ### Host specific things ###
 
 {{- if eq .chezmoi.hostname "cupcake" }}
@@ -17,6 +19,7 @@ plugins=(
   gitignore
   pip
   virtualenvwrapper
+  vi-mode
 )
 
 # lesspipe: brew install lesspipe
@@ -50,6 +53,7 @@ plugins=(
   pip
   python
   systemd
+  vi-mode
   virtualenvwrapper
   zsh-autosuggestions
   zsh-vim-mode
@@ -76,8 +80,12 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
 
+# Modal prompt for vi-mode
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
 # Theme
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -195,4 +203,5 @@ function chpwd() {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# vim:syntax=zsh
+# starship
+eval "$(starship init zsh)"
