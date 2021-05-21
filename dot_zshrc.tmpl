@@ -141,11 +141,11 @@ prompt_end() {
 # prompt_context(){}
 
 # Hooks
-# Source: https://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-    d
+# Source: https://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-cd
 # ls after every CD
 function chpwd() {
     emulate -L zsh
-    ls -al
+    l --grid
 }
 
 
