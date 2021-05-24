@@ -1,0 +1,12 @@
+# Open connections to hosts
+alias mousehouse open -u scott,sshkeysnotpasswords -p 22714 sftp://nihilism.fishcracker.net
+alias nihilism open -u scott,sshkeysnotpasswords -p 22 sftp://nihilism.fishcracker.net
+
+# Get the nnn selection and write the put command in a file.
+alias selup "!cat ${HOME}/.config/nnn/.selection | xargs -0 -I fname echo "put" \'fname\' > files.lftp"
+# Unfortunatley this simply downloads to the same directory. I could hardcode ~/Downloads or something...
+alias seldown "!cat ${HOME}/.config/nnn/.selection | sed 's/\/Users\/scott\/.config\/nnn\/mounts\/nihilismR\///g' | xargs -0 -I fname echo "get" \'fname\' > files.lftp"
+
+
+# Upload the files
+alias cp "source files.lftp; !rm files.lftp"
