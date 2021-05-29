@@ -38,6 +38,7 @@ Plug 'nelstrom/vim-visual-star-search'
 " find files semantically
 Plug 'tpope/vim-projectionist'
 Plug 'jiangmiao/auto-pairs'		" auto pair brackets, parens, and quotes
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'			" fzf
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " On-demand loading with nerdtree
 " typescript
