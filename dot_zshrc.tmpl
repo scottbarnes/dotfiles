@@ -126,8 +126,9 @@ alias t="exa --tree --level=2 --color=always --icons"
 
 # nnn
 export NNN_BMS="d:~/downloads;D:~/Documents;c:~/code;m:~/.config/nnn/mounts"
-export NNN_SSHFS="sshfs -o follow_symlinks"        # make sshfs follow symlinks on the remote
+export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG="o:fzopen;c:fzcd;d:diffs;r:renamer;k:pskill;p:preview-tui-ext"
+export NNN_SSHFS="sshfs -o follow_symlinks"        # make sshfs follow symlinks on the remote
 
 # Get a two line prompt.
 # agnoster
