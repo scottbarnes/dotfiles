@@ -233,7 +233,7 @@ tmux_conf_theme_right_separator_sub="|"
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 ## Default
 # tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} #{tmux_mode_indicator}"
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}, %R , %d %b | #{username}#{root} | #{hostname} #{tmux_mode_indicator}"
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{network_bandwidth}#{?battery_status,#{battery_status},}, %R , %d %b | #{username}#{root} | #{hostname} #{tmux_mode_indicator}"
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -402,7 +402,14 @@ set -g @plugin 'tmux-plugins/tmux-fpp'
 # extrakto
 # https://github.com/laktak/extrakto
 set -g @plugin 'laktak/extrakto'  
-set -g extrakto_key "A"
+set -g @extrakto_key "A"
+# https://github.com/tmux-plugins/tmux-net-speed
+set -g @plugin 'tmux-plugins/tmux-net-speed'
+# https://github.com/tmux-plugins/tmux-yank
+set -g @plugin 'tmux-plugins/tmux-yank'
+# https://github.com/xamut/tmux-network-bandwidth
+set -g @plugin 'xamut/tmux-network-bandwidth'
+
 
 # -- custom settings -----------------------------------------------------------
 ## https://github.com/MunifTanjim/tmux-suspend settings
