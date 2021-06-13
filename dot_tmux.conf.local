@@ -358,6 +358,9 @@ set -g prefix C-b
 # move status line to top
 #set -g status-position top
 
+# ensure we're using zsh
+set-option -g default-shell /bin/zsh
+
 # -- tpm -----------------------------------------------------------------------
 
 # while I don't use tpm myself, many people requested official support so here
@@ -396,6 +399,10 @@ set -g @plugin 'MunifTanjim/tmux-suspend'
 # Open files based on path. prefix + F
 # https://github.com/tmux-plugins/tmux-fpp
 set -g @plugin 'tmux-plugins/tmux-fpp'
+# extrakto
+# https://github.com/laktak/extrakto
+set -g @plugin 'laktak/extrakto'  
+set -g extrakto_key "A"
 
 # -- custom settings -----------------------------------------------------------
 ## https://github.com/MunifTanjim/tmux-suspend settings
