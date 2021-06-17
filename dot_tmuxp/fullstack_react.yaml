@@ -1,0 +1,18 @@
+session_name: Full Stack React
+shell_command_before:
+  - cd ~/code/book-fullstack-react-with-typescript/exercise-files/01-first-app-work/trello-clone
+windows:
+  - window_name: editor+test
+    layout: 1850,102x61,0,0[102x12,0,0,1,102x48,0,13,3]
+    panes:
+      - shell_command:
+        - yarn start
+      - shell_command:
+        - vim
+  - window_name: shell
+    panes:
+      - # shell 
+  - window_name: shell
+    panes:
+      - # shell 
+

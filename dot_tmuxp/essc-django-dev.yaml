@@ -1,0 +1,21 @@
+session_name: essc-django-dev
+shell_command_before:
+  - cd ~/code/essc
+  - workon essc
+windows:
+  - window_name: server
+    layout: even-vertical
+    panes:
+      - shell_command:
+        - docker-compose -f local.yml up
+      - # just open a shell
+  - window_name: shell_plus
+    panes:
+      - docker-compose -f local.yml run --rm django python manage.py shell_plus
+  - window_name: nvim
+    panes:
+      - nvim
+  - window_name: shell
+    panes:
+      - # shell 
+
