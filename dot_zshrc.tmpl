@@ -2,6 +2,7 @@
 
 ## Dependencies
 # exa (ls replacement)
+# fzf
 # mosh
 # nnn
 # neovim
@@ -9,6 +10,51 @@
 # zsh as shell
 
 ### Host specific things ###
+
+{{- if eq .chezmoi.hostname "eggtart" }}
+## EGGTART ##
+# Keychain
+eval `keychain --eval --agents ssh id_ed25519_eggtart`
+# Path
+export PATH=/usr/bin:$PATH
+# oh-my-zsh
+export ZSH="/home/scott/.oh-my-zsh"
+plugins=(
+  archlinux
+  colored-man-pages
+  copydir
+  copyfile
+  cp
+  django
+  docker
+  dotenv
+  fasd
+  git
+  gitignore
+  pip
+  python
+  systemd
+  virtualenvwrapper
+)
+
+# lesspipe: see source-highlight package
+# pacman -S source-highlight
+export LESSOPEN="| src-hilite-lesspipe.sh %s" # See source-highlight package
+
+# zsh syntax highlighting: pacman -S zsh-syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh autosuggestions
+# pacman -S zsh-autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# yay -S zsh-vim-mode
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# django
+export SHELL_PLUS='ipython'
+{{- end }}
+
 
 {{- if eq .chezmoi.hostname "cupcake" }}
 ## CUPCAKE ##
@@ -122,6 +168,12 @@ alias ll="exa --long --header --group --git --color=always --grid --icons --grou
 alias la="exa --long --header --group --git --color=always --grid --icons --group-directories-first --all"
 alias tree="exa --tree --color=always --long --git --icons"
 alias t="exa --tree --level=2 --color=always --icons"
+
+# nnn
+export NNN_BMS="d:~/downloads;D:~/Documents;c:~/code;m:~/.config/nnn/mounts"
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_PLUG="o:fzopen;c:fzcd;d:diffs;r:renamer;k:pskill;p:preview-tui-ext"
+export NNN_SSHFS="sshfs -o follow_symlinks"        # make sshfs follow symlinks on the remote
 
 # Get a two line prompt.
 # agnoster
