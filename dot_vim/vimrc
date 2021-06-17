@@ -167,6 +167,11 @@ augroup yaml_fix
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
 augroup END
 
+" Stop the html indent insanity
+autocmd BufNewfile,BufRead *.html
+    \ set shiftwidth=2
+    \ set tabstop=2
+
 "" ALE
 " For JavaScript and TypeScript files, use `eslint` (and only eslint)
 let g:ale_linters = {
