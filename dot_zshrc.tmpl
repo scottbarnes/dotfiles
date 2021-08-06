@@ -156,7 +156,7 @@ else
   export VISUAL='nvim'
 fi
 
-# Aliases/aliases
+## Aliases/aliases
 alias vim="nvim"
 alias vi="nvim"
 alias mMousehouse="mosh -p 60020:60029 mousehouseR"
@@ -169,6 +169,9 @@ alias ll="exa --long --header --group --git --color=always --grid --icons --grou
 alias la="exa --long --header --group --git --color=always --grid --icons --group-directories-first --all"
 alias tree="exa --tree --color=always --long --git --icons"
 alias t="exa --tree --level=2 --color=always --icons"
+# grep alias
+alias psg="ps waux | grep"
+alias lg="la | grep"
 
 # nnn
 export NNN_BMS="d:~/downloads;D:~/Documents;c:~/code;m:~/.config/nnn/mounts"
