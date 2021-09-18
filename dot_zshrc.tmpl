@@ -17,7 +17,8 @@
 # Keychain
 eval `keychain --eval --agents ssh id_ed25519_eggtart`
 # Path
-export PATH=/usr/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$GOPATH:/usr/bin:$PATH
 # oh-my-zsh
 export ZSH="/home/scott/.oh-my-zsh"
 plugins=(

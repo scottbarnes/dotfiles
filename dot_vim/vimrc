@@ -29,7 +29,7 @@ Plug 'tpope/vim-abolish'
 " Pair mappings; e.g., ]q and [q for cnext and cprevious, respectively.
 Plug 'tpope/vim-unimpaired'
 " Vim and git
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 " ack replacement; pacman -S the_silver_searcher
 Plug 'ggreer/the_silver_searcher'
@@ -42,16 +42,27 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'			" fzf
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " On-demand loading with nerdtree
 " typescript
-Plug 'pangloss/vim-javascript'		" JavaScript support
-Plug 'leafgarland/typescript-vim'	" TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'		" JS and JSX syntax
-Plug 'jparise/vim-graphql'		" GraphQL syntax
-Plug 'neoclide/coc.nvim' , { 'branch' : 'release' } " Conquerer of Completion
+" Plug 'pangloss/vim-javascript'		" JavaScript support
+" Plug 'leafgarland/typescript-vim'	" TypeScript syntax
+" Plug 'maxmellon/vim-jsx-pretty'		" JS and JSX syntax
+" Plug 'jparise/vim-graphql'		" GraphQL syntax
+" Plug 'neoclide/coc.nvim' , { 'branch' : 'release' } " Conquerer of Completion
 Plug 'dense-analysis/ale'               " Linting.
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Autoindent for python
 Plug 'vim-scripts/indentpython.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'hrsh7th/nvim-compe'  " https://github.com/hrsh7th/nvim-compe
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'nvim-lua/diagnostic-nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
@@ -80,7 +91,7 @@ nnoremap <C-p> :<C-u>FZF<CR>
 " CoC remaps
 """ CoC colors
 " The suggestions menu: https://stackoverflow.com/questions/64180454/how-to-change-coc-nvim-floating-window-colors
-hi CocErrorFloat ctermfg=Black
+" hi CocErrorFloat ctermfg=Black
 "" From the CoC FAQ
 " Give more space for displaying messages.
 set cmdheight=2
@@ -101,65 +112,65 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" " Use tab for trigger completion with characters ahead and navigate.
+" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" " other plugin before putting this into your config.
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+" " Use <c-space> to trigger completion.
+" if has('nvim')
+"   inoremap <silent><expr> <c-space> coc#refresh()
+" else
+"   inoremap <silent><expr> <c-@> coc#refresh()
+" endif
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" " Make <CR> auto-select the first completion item and notify coc.nvim to
+" " format on enter, <cr> could be remapped by other vim plugin
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" " Use `[g` and `]g` to navigate diagnostics
+" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" " GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   elseif (coc#rpc#ready())
+"     call CocActionAsync('doHover')
+"   else
+"     execute '!' . &keywordprg . " " . expand('<cword>')
+"   endif
+" endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+" " Symbol renaming.
+" nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" " Formatting selected code.
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 " Fix auto-indentation for YAML files
 augroup yaml_fix
@@ -171,6 +182,10 @@ augroup END
 autocmd BufNewfile,BufRead *.html
     \ set shiftwidth=2
     \ set tabstop=2
+
+" Use spaces as tabs in Go
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+autocmd BufWritePre *.go lua goimports(1000)
 
 "" ALE
 " For JavaScript and TypeScript files, use `eslint` (and only eslint)
@@ -187,14 +202,14 @@ nmap <silent> ]W <Plug>(ale_last)
 
 "" Formatting
 " Python
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=120
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+" au BufNewFile,BufRead *.py
+"     \ set tabstop=4
+"     \ set softtabstop=4
+"     \ set shiftwidth=4
+"     \ set textwidth=120
+"     \ set expandtab
+"     \ set autoindent
+"     \ set fileformat=unix
 
 " JS/HTML/CSS
 au BufNewFile,BufRead *.js, *.html, *.css
@@ -205,3 +220,77 @@ au BufNewFile,BufRead *.js, *.html, *.css
 " Flag extra whitespace
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
+" theme
+colorscheme everforest
+
+" telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" nvim-compe
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.resolve_timeout = 800
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
+let g:compe.source.luasnip = v:true
+let g:compe.source.emoji = v:true
+
+" vim-go
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
+""""""""
+" From
+" https://dev.to/casonadams/neovim-and-its-built-in-language-server-protocol-3j8g
+"" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"------------------------------------------------
+" Settings START
+filetype plugin on
+set updatetime=300
+set completeopt=menuone
+set completeopt+=noinsert
+set completeopt-=preview
+set shortmess+=c
+" Settings END
+"------------------------------------------------
+
+"------------------------------------------------
+" Status Line START
+set statusline=%<%f\ %h%m%r
+set statusline+=%=%-10.60{LspStatus()}\ %-.(%l,%c%V%)\ %P
+
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+
+  return ''
+endfunction
+" Status Line END
+"------------------------------------------------
