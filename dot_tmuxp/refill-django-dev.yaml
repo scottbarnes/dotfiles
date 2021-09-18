@@ -1,13 +1,13 @@
-session_name: essc-django-dev
+session_name: refill-django-dev
 shell_command_before:
-  - cd ~/code/understory
-  - workon understory
+  - cd ~/code/refill
+  - workon refill
 windows:
   - window_name: server
     layout: even-horizontal
     panes:
       - shell_command:
-        - docker-compose -f docker-compose.yml up
+        - docker-compose -f local.yml up
       - # just open a shell
   - window_name: shell_plus
     panes:
