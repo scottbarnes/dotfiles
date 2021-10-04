@@ -1,0 +1,32 @@
+# vim:fileencoding=utf-8:ft=yaml
+
+# See main.yaml for commentary (e.g. about the layout)
+
+session_name: mousehouse
+windows:
+  - window_name: main
+    layout: e103,205x50,0,0{102x50,0,0[102x17,0,0,22,102x32,0,18,25],102x50,103,0,23}
+    panes:
+      - shell_command:
+        - mosh srb@ssh.ocf.berkeley.edu
+        - tmux a
+        focus: true
+      - # shell
+      - # shell
+  - window_name: nnn
+    panes:
+      - shell_command:
+        - nnn
+  - window_name: shell
+  - window_name: despair
+    panes:
+      - shell_command:
+        - mosh scott@despair.fishcracker.net
+  - window_name: turtle
+    panes:
+      - shell_command:
+        - mosh scott@turtle
+  - window_name: nihilism
+    panes:
+      - shell_command:
+        - mosh scott@nihilism
