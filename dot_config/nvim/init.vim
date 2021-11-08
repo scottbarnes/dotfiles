@@ -63,6 +63,10 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
+
 lua <<EOF
   lspconfig = require "lspconfig"
   lspconfig.gopls.setup {
