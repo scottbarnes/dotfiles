@@ -105,6 +105,10 @@ eval `keychain --eval --agents ssh id_rsa`
 export PATH=/usr/bin:$PATH
 # oh-my-zsh
 export ZSH="/home/scott/.oh-my-zsh"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 plugins=(
   archlinux
   autojump
