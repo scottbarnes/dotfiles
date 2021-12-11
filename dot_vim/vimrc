@@ -172,6 +172,9 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " xmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
+" Briefly highly text on yank
+au TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=150, on_visual=true}
+
 " Fix auto-indentation for YAML files
 augroup yaml_fix
   autocmd!
