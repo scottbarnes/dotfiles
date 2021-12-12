@@ -137,11 +137,11 @@ au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 
 " Full stack development
-au BufNewFile,BufRead *.js,*.html,*.css set tabstop=2
-au BufNewFile,BufRead *.js,*.html,*.css set softtabstop=2
-au BufNewFile,BufRead *.js,*.html,*.css set shiftwidth=2
-au BufNewFile,BufRead *.js,*.html,*.css set expandtab
-au BufNewFile,BufRead *.js,*.html,*.css set autoindent
+au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.html,*.css set tabstop=2
+au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.html,*.css set softtabstop=2
+au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.html,*.css set shiftwidth=2
+au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.html,*.css set expandtab
+au BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.html,*.css set autoindent
 
 "" ALE
 " For JavaScript and TypeScript files, use `eslint` (and only eslint)
