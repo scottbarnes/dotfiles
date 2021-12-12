@@ -64,14 +64,11 @@ Plug 'nvim-lua/diagnostic-nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sbdchd/neoformat'
 Plug 'phaazon/hop.nvim'
+Plug 'windwp/nvim-ts-autotag'
 
 call plug#end()
 
-" CoC extension for tsserver
-" let g:coc_global_extensions = [ 'coc-tsserver' ]
-" https://github.com/fannheyward/coc-styled-components
-" CocInstall coc-styled-components
-" CocInstall coc-snippets
+lua require('nvim-ts-autotag').setup()
 
 set laststatus=2
 if !has('gui_running')
