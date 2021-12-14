@@ -110,6 +110,8 @@ endif
 lua require'hop'.setup {keys = 'aoeuidhtspyfgcrlqjkxbbmwvz'}
 map s <cmd>HopChar1<CR>
 omap s v<cmd>HopChar1<CR>
+map <leader>s <cmd>HopChar2<CR>
+omap <leader>s v<cmd>HopChar2<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
