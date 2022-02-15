@@ -41,7 +41,7 @@ plugins=(
   pyenv
   python
   systemd
-  virtualenvwrapper
+  # virtualenvwrapper
 )
 
 # lesspipe: see source-highlight package
@@ -82,7 +82,8 @@ plugins=(
   dotenv
   gitignore
   pip
-  virtualenvwrapper
+  pyenv
+  # virtualenvwrapper
   vi-mode
 )
 
@@ -103,6 +104,25 @@ eval `keychain --eval --agents ssh id_rsa`
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+plugins=(
+  colored-man-pages
+  copydir
+  copyfile
+  cp
+  docker
+  dotenv
+  git
+  gitignore
+  poetry
+  pip
+  pyenv
+  python
+  vi-mode
+  zsh-autosuggestions
+  zsh-vim-mode
+)
+
 {{- end }}
 
 {{- if eq .chezmoi.hostname "mousehouse" }}
@@ -137,7 +157,7 @@ plugins=(
   python
   systemd
   vi-mode
-  virtualenvwrapper
+  # virtualenvwrapper
   zsh-autosuggestions
   zsh-vim-mode
 )
@@ -308,3 +328,6 @@ function chpwd() {
 eval "$(starship init zsh)"
 # zoxide
 eval "$(zoxide init zsh)"
+
+# pyenv
+eval "$(pyenv init -)"
