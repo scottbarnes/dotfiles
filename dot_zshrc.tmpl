@@ -149,6 +149,7 @@ plugins=(
   cp
   docker
   dotenv
+  gcloud
   git
   gitignore
   poetry
@@ -332,3 +333,8 @@ eval "$(zoxide init zsh)"
 
 # pyenv
 eval "$(pyenv init -)"
+
+# Added by TerraForm
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+

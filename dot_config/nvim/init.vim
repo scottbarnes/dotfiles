@@ -50,7 +50,8 @@ local servers = {
 	'gopls',
 	'dockerls',
 	'bashls',
-	'cmake'
+	'cmake',
+	'terraformls',
 }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -65,6 +66,7 @@ EOF
 
 lua << EOF
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.terraformls.setup{}
 EOF
 
 lua <<EOF
