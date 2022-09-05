@@ -1,0 +1,18 @@
+session_name: openlibrary-dev
+start_directory: ~/code/openlibrary
+shell_command_before:
+  - '[ -f .venv/bin/activate ] && source .venv/bin/activate && reset'
+windows:
+  - window_name: server
+    layout: even-horizontal
+    panes:
+      - shell_command:
+        - docker-compose up
+      - # just open a shell
+  - window_name: lvim
+    focus: true
+    panes:
+      - lvim
+  - window_name: shell
+    panes:
+      - # just open a shell
