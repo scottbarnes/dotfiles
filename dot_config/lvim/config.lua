@@ -65,21 +65,23 @@ lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.dap.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
+  "css",
   "go",
+  "java",
   "javascript",
   "json",
   "lua",
   "python",
-  "typescript",
-  "tsx",
-  "css",
   "rust",
-  "java",
+  "toml",
+  "tsx",
+  "typescript",
   "yaml",
 }
 
@@ -139,7 +141,7 @@ formatters.setup {
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     extra_args = { "--print-with", "88" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact" },
+    filetypes = { "typescript", "typescriptreact", },
   },
 }
 
@@ -161,25 +163,6 @@ linters.setup {
   },
 }
 
--- Additional Plugins
-lvim.plugins = {
-  { "folke/tokyonight.nvim" },
-  { "sainnhe/everforest" },
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
-  {
-    "phaazon/hop.nvim",
-    event = "BufRead",
-    config = function()
-      require("hop").setup()
-      vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
-      vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
-    end,
-  },
-
-}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
@@ -220,3 +203,18 @@ lvim.builtin.lualine.sections.lualine_y = {
   components.spaces,
   components.location
 }
+
+-- Debugging
+-- =========================================
+if lvim.builtin.dap.active then
+  -- require("user.dap").config()
+  require('dap.ext.vscode').load_launchjs()
+end
+
+-- Additional Plugins
+-- =========================================
+require("user.plugins").config()
+
+-- Additional keybindings
+-- =========================================
+require("user.keybindings").config()

@@ -1,7 +1,8 @@
 session_name: openlibrary-dev
 start_directory: ~/code/openlibrary
 shell_command_before:
-  - '[ -f .venv/bin/activate ] && source .venv/bin/activate && reset'
+  # - '[ -f .venv/bin/activate ] && source .venv/bin/activate && reset'
+  - 'pyenv activate openlibrary-dev && reset'
 windows:
   - window_name: server
     layout: even-horizontal

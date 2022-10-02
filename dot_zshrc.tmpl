@@ -68,6 +68,8 @@ export SHELL_PLUS='ipython'
 # Keychain
 eval `keychain --eval --agents ssh id_rsa id_ed25519 id_rsa_4096`
 # Path
+export GOPATH=$HOME/go
+export PATH=$GOPATH:/usr/bin:$PATH
 export PATH=/Users/scott/Library/Python/3.9/bin:/usr/sbin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
