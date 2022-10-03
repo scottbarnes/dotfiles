@@ -10,16 +10,15 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false
 vim.api.nvim_set_var("everforest_background", "hard")
 lvim.colorscheme = "everforest"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+-- See ~/.config/lvim/lua/user/keybindings.lua
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -177,11 +176,6 @@ linters.setup {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-
--- Custom bindings
-vim.cmd("nnoremap j gj")
-vim.cmd("nnoremap k gk")
-vim.cmd("nnoremap Q <nop>")
 
 -- Custom functions
 

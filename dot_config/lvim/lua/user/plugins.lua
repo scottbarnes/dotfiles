@@ -50,6 +50,14 @@ M.config = function()
         require('go').setup()
       end,
     },
+    { 'ray-x/guihua.lua',
+    config = function()
+      require('guihua.maps').setup({
+        maps = {
+          close_view = '<C-x>',
+        }
+      })
+      end,},
     {
       "rcarriga/nvim-dap-ui",
       config = function()
