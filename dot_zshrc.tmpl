@@ -20,8 +20,8 @@ eval `keychain --eval --agents ssh id_ed25519_eggtart`
 export GOPATH=$HOME/go
 export PATH=$GOPATH:/usr/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # oh-my-zsh
 export ZSH="/home/scott/.oh-my-zsh"
@@ -138,8 +138,8 @@ export PATH=$GOPATH:$RUSTPATH:/usr/bin:$PATH
 # oh-my-zsh
 export ZSH="/home/scott/.oh-my-zsh"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
