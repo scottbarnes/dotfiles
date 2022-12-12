@@ -133,8 +133,9 @@ plugins=(
 eval `keychain --eval --agents ssh id_rsa`
 # Path
 export GOPATH=$HOME/go
+export GOPATHBIN=$GOPATH/bin
 RUSTPATH=/home/scott/.cargo/bin
-export PATH=$GOPATH:$RUSTPATH:/usr/bin:$PATH
+export PATH=$GOPATH:$GOPATHBIN:$RUSTPATH:/usr/bin:$PATH
 # oh-my-zsh
 export ZSH="/home/scott/.oh-my-zsh"
 export PYENV_ROOT="$HOME/.pyenv"
