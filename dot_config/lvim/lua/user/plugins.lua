@@ -71,16 +71,16 @@ M.config = function()
         }
       })
       end,},
-    {
-      "rcarriga/nvim-dap-ui",
-      config = function()
-        require("dapui").setup()
-      end,
-      ft = { "python", "rust", "go" },
-      event = "BufReadPost",
-      requires = { "mfussenegger/nvim-dap" },
-      disable = not lvim.builtin.dap.active,
-    },
+    -- {
+    --   "rcarriga/nvim-dap-ui",
+    --   config = function()
+    --     require("dapui").setup()
+    --   end,
+    --   ft = { "python", "rust", "go" },
+    --   event = "BufReadPost",
+    --   requires = { "mfussenegger/nvim-dap" },
+    --   disable = not lvim.builtin.dap.active,
+    -- },
   }
 
 end
