@@ -8,7 +8,7 @@ windows:
     layout: e103,205x50,0,0{102x50,0,0[102x17,0,0,22,102x32,0,18,25],102x50,103,0,23}
     panes:
       - shell_command:
-        - mosh srb@ssh.ocf.berkeley.edu
+        - mosh ocf
         - tmux a
         focus: true
       - # shell
@@ -25,8 +25,8 @@ windows:
   - window_name: turtle
     panes:
       - shell_command:
-        - mosh scott@turtle
+        - mosh turtle
   - window_name: nihilism
     panes:
       - shell_command:
-        - mosh scott@nihilism
+        - mosh nihilism
