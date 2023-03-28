@@ -130,7 +130,7 @@ plugins=(
 {{- if eq .chezmoi.hostname "mousehouse" }}
 ## MOUSEHOUSE ##
 # Keychain
-eval `keychain --eval --agents ssh id_rsa`
+eval `keychain --eval --agents ssh id_rsa id_ed25519`
 # Path
 export GOPATH=$HOME/go
 export GOPATHBIN=$GOPATH/bin
