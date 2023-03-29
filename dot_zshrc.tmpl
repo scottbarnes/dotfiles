@@ -15,7 +15,7 @@
 {{- if eq .chezmoi.hostname "eggtart" }}
 ## EGGTART ##
 # Keychain
-eval `keychain --eval --agents ssh id_ed25519_eggtart`
+eval `keychain --eval --agents ssh id_ed25519`
 # Path
 export GOPATH=$HOME/go
 export PATH=$GOPATH:/usr/bin:$PATH
