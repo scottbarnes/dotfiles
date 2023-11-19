@@ -109,22 +109,20 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 plugins=(
   colored-man-pages
-  copypath
   copyfile
+  copypath
   cp
   docker
   dotenv
   git
   gitignore
-  poetry
   pip
+  poetry
   pyenv
   python
-  vi-mode
   zsh-autosuggestions
-  zsh-vim-mode
 )
-
+plugins+=(zsh-vi-mode)  # See https://github.com/jeffreytse/zsh-vi-mode
 {{- end }}
 
 {{- if eq .chezmoi.hostname "mousehouse" }}
@@ -141,6 +139,10 @@ export ZSH="/home/scott/.oh-my-zsh"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+# asdf
+. /opt/asdf-vm/asdf.sh
+# nomad aliases: https://gitlab.com/internetarchive/nomad#laptop-access
+FI=$HOME/code/nomad/aliases  &&  [ -e $FI ]  &&  source $FI
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
