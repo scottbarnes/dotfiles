@@ -26,7 +26,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 # oh-my-zsh
-export ZSH="/home/scott/.oh-my-zsh"
+export ZSH="/home/scottb/.oh-my-zsh"
 plugins=(
   archlinux
   colored-man-pages
@@ -185,7 +185,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # zsh-vi-mode: https://github.com/jeffreytse/zsh-vi-mode
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # django
 export SHELL_PLUS='ipython'
@@ -210,16 +210,16 @@ VI_MODE_SET_CURSOR=true
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-  export VISUAL='nvim'
+  export EDITOR='lvim'
+  export VISUAL='lvim'
 else
-  export EDITOR='vim'
-  export VISUAL='nvim'
+  export EDITOR='lvim'
+  export VISUAL='lvim'
 fi
 
 ## Aliases/aliases
-alias vim="nvim"
-alias vi="nvim"
+alias vim="lvim"
+alias vi="lvim"
 alias mMousehouse="mosh -p 60020:60029 mousehouseR"
 alias mTurtle="mosh -p 60010:60019 turtleR"
 alias mNihilism="mosh -p 60000:60009 nihilismR"
@@ -350,6 +350,6 @@ eval "$(zoxide init zsh)"
 eval "$(pyenv init -)"
 
 # Added by TerraForm
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/bin/terraform terraform
 
