@@ -5,9 +5,9 @@
 set $mod Mod4
 
 # Set monitors
-set $monitor_left HDMI-0
-set $monitor_middle DP-1
-set $monitor_right DP-2
+set $monitor_left HDMI-1
+set $monitor_middle DP-2
+set $monitor_right DP-1
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>

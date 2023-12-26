@@ -34,6 +34,7 @@ plugins=(
   copyfile
   cp
   docker
+  docker-compose
   dotenv
   fasd
   git
@@ -150,7 +151,7 @@ eval "$(pyenv init -)"
 # asdf
 . /opt/asdf-vm/asdf.sh
 # nomad aliases: https://gitlab.com/internetarchive/nomad#laptop-access
-FI=$HOME/code/nomad/aliases  &&  [ -e $FI ]  &&  source $FI
+# FI=$HOME/code/nomad/aliases  &&  [ -e $FI ]  &&  source $FI
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -163,6 +164,7 @@ plugins=(
   copyfile
   cp
   docker
+  docker-compose
   dotenv
   gcloud
   git
@@ -185,7 +187,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # zsh-vi-mode: https://github.com/jeffreytse/zsh-vi-mode
-# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # django
 export SHELL_PLUS='ipython'
