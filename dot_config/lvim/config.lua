@@ -130,3 +130,5 @@ lvim.colorscheme = "everforest"
 vim.opt.relativenumber = false                          -- disable relative line numbers.
 lvim.builtin.bufferline.active = false                  -- disable https://github.com/akinsho/bufferline.nvim
 lvim.lsp.installer.setup.automatic_installation = false -- stop mason from installing pylyzer again and again
+-- LSP
+require("lspconfig")["phpactor"].setup({})
